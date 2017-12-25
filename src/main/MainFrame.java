@@ -1,7 +1,12 @@
 package main;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
+/**
+ * 
+ * @author Benzolamps
+ *
+ */
 public class MainFrame extends JFrame {
 	private static final long serialVersionUID = -3249573337883474642L;
 	DrawPanel draw = new DrawPanel();

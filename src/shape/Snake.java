@@ -1,8 +1,14 @@
 package shape;
 
 import java.awt.Color;
-import java.util.*;
+import java.util.Random;
+import java.util.Vector;
 
+/**
+ * 
+ * @author Benzolamps
+ *
+ */
 public class Snake extends Vector<Block> {
 	private static final long serialVersionUID = -4291321031204316836L;
 

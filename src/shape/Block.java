@@ -1,7 +1,13 @@
 package shape;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Rectangle;
 
+/**
+ * 
+ * @author Benzolamps
+ *
+ */
 public class Block extends Rectangle {
 	private static final long serialVersionUID = 1207728129959144395L;
 

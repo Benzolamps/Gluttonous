@@ -1,11 +1,23 @@
 package main;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.*;
-import shape.*;
+import javax.swing.JPanel;
 
+import shape.Block;
+import shape.Food;
+import shape.Snake;
+
+/**
+ * 
+ * @author Benzolamps
+ *
+ */
 public class DrawPanel extends JPanel implements KeyListener, Runnable {
 	private static final long serialVersionUID = -1790872881032236015L;
 

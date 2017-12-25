@@ -1,8 +1,13 @@
 package shape;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
+import java.util.Random;
 
+/**
+ * 
+ * @author Benzolamps
+ *
+ */
 public class Food extends Block {
 	private static final long serialVersionUID = -7299247196930660433L;
 
