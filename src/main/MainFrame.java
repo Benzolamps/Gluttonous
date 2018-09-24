@@ -8,22 +8,22 @@ import javax.swing.JFrame;
  *
  */
 public class MainFrame extends JFrame {
-	private static final long serialVersionUID = -3249573337883474642L;
-	DrawPanel draw = new DrawPanel();
+    private static final long serialVersionUID = -3249573337883474642L;
+    DrawPanel draw = new DrawPanel();
 
-	public MainFrame() {
-		super("Ã∞≥‘…ﬂ");
+    public MainFrame() {
+        super("Ë¥™ÂêÉËõá");
 
-		setResizable(false);
-		setSize(1004, 640);
-		addKeyListener(draw);
-		getContentPane().add(draw);
-		setVisible(true);
-	}
+        setResizable(false);
+        setSize(1004, 640);
+        addKeyListener(draw);
+        getContentPane().add(draw);
+        setVisible(true);
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		MainFrame.setDefaultLookAndFeelDecorated(true);
-		new MainFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        MainFrame.setDefaultLookAndFeelDecorated(true);
+        new MainFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 }
