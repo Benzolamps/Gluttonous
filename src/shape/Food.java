@@ -18,10 +18,12 @@ public class Food extends Block {
 	public Food(int m, int n, Color color, Snake snake) {
 		super(m, n, color);
 		this.snake = snake;
-		if (getColor() == Color.PINK || getColor() == Color.BLUE)
+		if (getColor() == Color.PINK || getColor() == Color.BLUE) {
 			currentDestination = 0;
-		if (getColor() == Color.ORANGE)
+		}
+		if (getColor() == Color.ORANGE) {
 			currentDestination = (r.nextInt(2) + 1) * (r.nextInt(2) == 0 ? 1 : -1);
+		}
 		if (getColor() == Color.YELLOW) {
 			currentDestination = (r.nextInt(2) == 0 ? 1 : -1);
 			currentDestinationExtra = 2 * (r.nextInt(2) == 0 ? 1 : -1);
@@ -29,10 +31,11 @@ public class Food extends Block {
 		if (getColor() == Color.CYAN) {
 			original.setM((getM() >= (49 / 2)) ? (49 - getM()) : getM());
 			original.setN((getN() >= (39 / 2)) ? (39 - getN()) : getN());
-			if (r.nextInt(2) == 0)
+			if (r.nextInt(2) == 0) {
 				original.currentDestination = Snake.DOWN;
-			else
+			} else {
 				original.currentDestination = Snake.RIGHT;
+			}
 		}
 	}
 
@@ -73,8 +76,9 @@ public class Food extends Block {
 	private boolean eatabled() {
 		int m = Math.abs(snake.get(snake.size() - 1).getM() - getM());
 		int n = Math.abs(snake.get(snake.size() - 1).getN() - getN());
-		if (m == 0 && n == 0)
+		if (m == 0 && n == 0) {
 			return true;
+		}
 		if (getColor() == Color.ORANGE || getColor() == Color.YELLOW || getColor() == Color.CYAN) {
 			int d = Math.abs(snake.getCurrentDestination()) - Math.abs(currentDestination);
 			if (d != 0) {
