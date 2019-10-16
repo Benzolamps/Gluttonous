@@ -9,6 +9,7 @@ import java.awt.Rectangle;
  *
  */
 public class Block extends Rectangle {
+
 	private static final long serialVersionUID = 1207728129959144395L;
 
 	public int currentDestination = 0;

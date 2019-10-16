@@ -44,6 +44,7 @@ public class DrawPanel extends JPanel implements KeyListener, Runnable {
 		t.start();
 	}
 
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2D = (Graphics2D) g;
@@ -62,10 +63,12 @@ public class DrawPanel extends JPanel implements KeyListener, Runnable {
 		drawScore(g2D);
 		if (gameOver || paused) {
 			String str = null;
-			if (paused)
+			if (paused) {
 				str = "PAUSED";
-			if (gameOver)
+			}
+			if (gameOver) {
 				str = "GAME OVER";
+			}
 			g2D.setPaint(new Color(255, 0, 128));
 			g2D.drawString(str, 20, 385);
 		}
@@ -78,8 +81,9 @@ public class DrawPanel extends JPanel implements KeyListener, Runnable {
 
 	private void drawSnake(Graphics2D g2D) {
 		g2D.setPaint(snake.get(0).getColor());
-		for (Block b : snake)
+		for (Block b : snake) {
 			g2D.fillRoundRect(b.x, b.y, b.width, b.height, b.width, b.width);
+		}
 	}
 
 	private void drawBlood(Graphics2D g2D) {
@@ -141,61 +145,61 @@ public class DrawPanel extends JPanel implements KeyListener, Runnable {
 	}
 
 	private int calculateScore() {
-		if (food.getColor() == Color.RED && blood < 30)
+		if (food.getColor() == Color.RED && blood < 30) {
 			return 0;
+		}
 		int dm = Math.abs(food.getM() - lastFood.getM());
 		int dn = Math.abs(food.getN() - lastFood.getN());
 		int m = value - dm - dn;
-		;
 		int n = 0;
-		if (food.getColor() == Color.YELLOW)
+		if (food.getColor() == Color.YELLOW) {
 			n = 15;
-		else if (food.getColor() == Color.CYAN)
+		} else if (food.getColor() == Color.CYAN) {
 			n = 10;
-		else if (food.getColor() == Color.ORANGE)
+		} else if (food.getColor() == Color.ORANGE) {
 			n = 5;
-		if (m > 90)
+		}
+		if (m > 90) {
 			return n + 1;
-		else
+		} else {
 			return n + 10 - m / 10;
+		}
 	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		switch (arg0.getKeyCode()) {
-		case KeyEvent.VK_P:
-			pause();
-			break;
-		case KeyEvent.VK_R:
-			restart();
-			break;
+			case KeyEvent.VK_P:
+				pause();
+				break;
+			case KeyEvent.VK_R:
+				restart();
+				break;
 		}
-		if (paused || gameOver || needSleep)
+		if (paused || gameOver || needSleep) {
 			return;
+		}
 		switch (arg0.getKeyCode()) {
-		case KeyEvent.VK_UP:
-		case KeyEvent.VK_W:
-			snake.setCurrentDestination(Snake.UP);
-			break;
-		case KeyEvent.VK_DOWN:
-		case KeyEvent.VK_S:
-			snake.setCurrentDestination(Snake.DOWN);
-			break;
-		case KeyEvent.VK_LEFT:
-		case KeyEvent.VK_A:
-			snake.setCurrentDestination(Snake.LEFT);
-			break;
-		case KeyEvent.VK_RIGHT:
-		case KeyEvent.VK_D:
-			snake.setCurrentDestination(Snake.RIGHT);
-			break;
+			case KeyEvent.VK_UP:
+			case KeyEvent.VK_W:
+				snake.setCurrentDestination(Snake.UP);
+				break;
+			case KeyEvent.VK_DOWN:
+			case KeyEvent.VK_S:
+				snake.setCurrentDestination(Snake.DOWN);
+				break;
+			case KeyEvent.VK_LEFT:
+			case KeyEvent.VK_A:
+				snake.setCurrentDestination(Snake.LEFT);
+				break;
+			case KeyEvent.VK_RIGHT:
+			case KeyEvent.VK_D:
+				snake.setCurrentDestination(Snake.RIGHT);
+				break;
 		}
 		needSleep = true;
 	}
@@ -219,36 +223,38 @@ public class DrawPanel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		while (true) {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if (paused || gameOver)
+			if (paused || gameOver) {
 				continue;
-			if (snake.getCurrentDestination() != 0)
+			}
+			if (snake.getCurrentDestination() != 0) {
 				value++;
+			}
 			if (!snake.move()) {
-				if (blood > 0)
+				if (blood > 0) {
 					--blood;
-				else
+				}
+				else {
 					gameOver = true;
+				}
 			}
 			needSleep = false;
 			if (food.move()) {
 				scoreAddition = calculateScore();
 				score += scoreAddition;
 				if (food.getColor() == Color.RED) {
-					if (blood < 30)
+					if (blood < 30) {
 						blood += 3;
+					}
 				}
 				lastFood = (Food) food.clone();
 				food = Food.produceOneFood(snake);
